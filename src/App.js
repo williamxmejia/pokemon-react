@@ -7,19 +7,15 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [lists, setList] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
+  const [filteredResuts, setFilteredResults] = useState([])
+  const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    getPokemons();
-  }, []);
-
-  //This makes the request
   const getPokemons = async () => {
     const url = "https://pokeapi.co/api/v2/pokemon/";
     const response = await Axios(url);
     const results = response.data.results;
 
-    //Could not get the hook to work, ended up using
     let pokemons = [];
 
     for (let result of results) {
@@ -27,26 +23,46 @@ function App() {
       const pokemonResponse = await Axios(individualPokemonUrl);
       pokemons.push(pokemonResponse.data);
     }
-    setList(pokemons);
+    setPokemons(pokemons);
   };
+
+  useEffect(() => {
+    getPokemons();
+  }, []);
+
+  useEffect(() => {
+    if(search !== ''){
+      const filteredPokemon = pokemons.filter((item) =>{
+        return item.name.includes(search.toLowerCase());
+      })
+      setFilteredResults(filteredPokemon)
+    }
+    else {
+      setFilteredResults(pokemons)
+    }
+  }, [search, pokemons])
 
   return (
     <div className="container">
-      {/* <Header /> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Header />}></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
+
       <div className="d-flex flex-wrap">
-        {lists.map((x) => {
-          return (
-            <div key={x.id} className="card mx-5 my-5">
-              <img src={x.sprites.front_default}></img>
-              <p className="text-center">{capitalizeFirstLetter(x.name)}</p>
-            </div>
-          );
-        })}
+        {
+            filteredResuts.map((x) =>{
+              return(
+                <div key={x.id} className="card mx-5 my-5">
+                  <img src={x.sprites.front_default}></img>
+                  <p className="text-center">{capitalizeFirstLetter(x.name)}</p>
+                </div>
+              )
+            })
+        }
       </div>
     </div>
   );
