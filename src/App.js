@@ -7,10 +7,12 @@ import IndividualPoke from "./components/IndividualPoke";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 
 function App() {
+
+
     return (
             <Routes>
                 <Route path="/" element={<AllPoke />} />
-                <Route path="/poke" element={<IndividualPoke />} />
+                <Route path="/:name" element={<IndividualPoke />} />
             </Routes>
 
 
