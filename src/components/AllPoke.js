@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react"
 import Axios from "axios"
-import {BrowserRouter as Router,Link} from "react-router-dom";
+import {BrowserRouter as Router, Link} from "react-router-dom";
 
 
 function AllPoke() {
     const [pokemons, setPokemons] = useState([])
     const [filteredResuts, setFilteredResults] = useState([])
     const [search, setSearch] = useState('')
-    const [individual, setIndividual] = useState([])
 
     const getPokemons = async () => {
         const url = "https://pokeapi.co/api/v2/pokemon/?Limit=1000";
@@ -53,11 +52,12 @@ function AllPoke() {
                     filteredResuts.map((x) => {
                         return (
                             <div>
-                                <Link to={"/poke"}  key={x.id} className="d-flex justify-content-center row mx-5 my-5 _d321">
+                                <Link to={`/${x.name}`}  key={x.id} className="d-flex justify-content-center row mx-5 my-5 _d321">
                                     <img src={x.sprites.front_default}></img>
                                     <p className="text-center _b111">{capitalizeFirstLetter(x.name)}</p>
                                 </Link>
                             </div>
+                            //
                         )
                     })
                 }
