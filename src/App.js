@@ -14,6 +14,7 @@ function App() {
                 <Route path="/" element={<AllPoke />} />
                 <Route path="/:name" element={<IndividualPoke />} />
             </Routes>
+        //
 
 
     )

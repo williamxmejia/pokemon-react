@@ -57,6 +57,7 @@ function AllPoke() {
                                     <p className="text-center _b111">{capitalizeFirstLetter(x.name)}</p>
                                 </Link>
                             </div>
+                            //
                         )
                     })
                 }

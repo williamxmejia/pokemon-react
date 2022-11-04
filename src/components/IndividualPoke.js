@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 function IndividualPoke(){
     const [individual, setIndividual] = useState([]);
     const { name } = useParams();
+    //
 
 
     const onClick = async () => {
