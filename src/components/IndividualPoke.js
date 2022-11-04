@@ -34,27 +34,27 @@ function IndividualPoke() {
                     <Link className="navbar-brand" to={"/"}>PokeDex</Link>
                 </nav>
                 <div className="container d-flex mt-5">
-                    <img className="_ffb12 card" src={individual.sprites.front_default}></img>
+                    {/*<img className="_ffb12 card" src={individual.sprites.front_default}></img>*/}
                     <div className="mx-5">
                         <ul><h2>About</h2>
-                            <li>Species Name: {capitalizeFirstLetter(individual.name)}</li>
+                            {/*<li>Species Name: {capitalizeFirstLetter(individual.name)}</li>*/}
                             <li>Species Name: {individual.name}</li>
-                            <li>Base Experience: {individual.base_experience}</li>
-                            <li className="">Types: {
-                                individual.types.map((x) => {
-                                    return (
-                                        <div className="mx-1">{x.type.name}</div>
-                                    )
-                                })
-                            }</li>
-                            <li>Abilities: {
-                                individual.abilities.map(x => {
-                                    return (
-                                        <div>{x.ability.name}</div>
-                                    )
+                            {/*<li>Base Experience: {individual.base_experience}</li>*/}
+                            {/*<li className="">Types: {*/}
+                            {/*    individual.types.map((x) => {*/}
+                            {/*        return (*/}
+                            {/*            <div className="mx-1">{x.type.name}</div>*/}
+                            {/*        )*/}
+                            {/*    })*/}
+                            {/*}</li>*/}
+                            {/*<li>Abilities: {*/}
+                            {/*    individual.abilities.map(x => {*/}
+                            {/*        return (*/}
+                            {/*            <div>{x.ability.name}</div>*/}
+                            {/*        )*/}
 
-                                })
-                            }</li>
+                            {/*    })*/}
+                            {/*}</li>*/}
                         </ul>
 
 
