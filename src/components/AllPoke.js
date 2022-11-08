@@ -9,7 +9,7 @@ function AllPoke() {
     const [search, setSearch] = useState('')
 
     const getPokemons = async () => {
-        const url = "https://pokeapi.co/api/v2/pokemon/?Limit=1000";
+        const url = " https://pokeapi.co/api/v2/pokemon?limit=159&offset=0";
         const response = await Axios(url)
         const results = response.data.results
         console.log(url)
